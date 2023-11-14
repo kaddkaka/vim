@@ -169,7 +169,7 @@ comprehensive ability to keep your plugins up-to-date!
 In summary:
 
   * Optionally tell getscript that it is allowed to build/append a
-    GetLatestVimScripts.dat file based upon already installed plugins: >
+    GetLatestVimScripts.dat file based upon already installed plugins: >vim
 	let g:GetLatestVimScripts_allowautoinstall=1
 <
   * A line such as >

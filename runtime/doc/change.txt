@@ -1244,7 +1244,7 @@ There are ten types of registers:		*registers* *{register}* *E354*
 5. Three read-only registers ":, "., "%
 6. Alternate buffer register "#
 7. The expression register "=
-8. The selection and drop registers "*, "+ and "~ 
+8. The selection and drop registers "*, "+ and "~
 9. The black hole register "_
 10. Last search pattern register "/
 
@@ -1349,7 +1349,7 @@ If the "= register is used for the "p" command, the String is split up at <NL>
 characters.  If the String ends in a <NL>, it is regarded as a linewise
 register.
 
-8. Selection and drop registers "*, "+ and "~ 
+8. Selection and drop registers "*, "+ and "~
 Use these registers for storing and retrieving the selected text for the GUI.
 See |quotestar| and |quoteplus|.  When the clipboard is not available or not
 working, the unnamed register is used instead.  For Unix systems the clipboard
@@ -1829,9 +1829,9 @@ All of this should be really cool, especially in conjunction with the new
 :autocmd command to prepare different settings for different types of file.
 
 Some examples:
-  for C code (only format comments): >
+  for C code (only format comments): >vim
 	:set fo=croq
-< for Mail/news	(format all, don't start comment with "o" command): >
+< for Mail/news	(format all, don't start comment with "o" command): >vim
 	:set fo=tcrq
 <
 
@@ -1851,9 +1851,9 @@ editing text paragraphs.  A few hints on how to use this:
 
 - Set 'formatoptions' to "aw2tq" to make text with indents like this:
 
-	    bla bla foobar bla 
+	    bla bla foobar bla
 	bla foobar bla foobar bla
-	    bla bla foobar bla 
+	    bla bla foobar bla
 	bla foobar bla bla foobar
 
 - Add the 'c' flag to only auto-format comments.  Useful in source code.
@@ -1864,7 +1864,8 @@ editing text paragraphs.  A few hints on how to use this:
 And a few warnings:
 
 - When part of the text is not properly separated in paragraphs, making
-  changes in this text will cause it to be formatted anyway.  Consider doing >
+  changes in this text will cause it to be formatted anyway.  Consider doing
+  >vim
 
 	:set fo-=a
 

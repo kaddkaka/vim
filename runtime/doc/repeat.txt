@@ -809,7 +809,8 @@ To enter debugging mode use one of these methods:
 								*:debug*
 2. Run a command with ":debug" prepended.  Debugging will only be done while
    this command executes.  Useful for debugging a specific script or user
-   function.  And for scripts and functions used by autocommands.  Example: >
+   function.  And for scripts and functions used by autocommands.  Example:
+   >vim
 	:debug edit test.txt.gz
 
 3. Set a breakpoint in a sourced file or user function.  You could do this in

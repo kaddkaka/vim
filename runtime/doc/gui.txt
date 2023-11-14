@@ -48,12 +48,12 @@ When the GUI starts up initializations are carried out, in this order:
   see |$VIMRUNTIME|.  To skip loading the system menu include 'M' in
   'guioptions'.				*buffers-menu* *no_buffers_menu*
   The system menu file includes a "Buffers" menu.  If you don't want this, set
-  the "no_buffers_menu" variable in your .vimrc (not .gvimrc!): >
+  the "no_buffers_menu" variable in your .vimrc (not .gvimrc!): >vim
 	:let no_buffers_menu = 1
 < NOTE: Switching on syntax highlighting also loads the menu file, thus
   disabling the Buffers menu must be done before ":syntax on".
   The path names are truncated to 35 characters.  You can truncate them at a
-  different length, for example 50, like this: >
+  different length, for example 50, like this: >vim
 	:let bmenu_max_pathlen = 50
 - If the "-U {gvimrc}" command-line option has been used when starting Vim,
   the {gvimrc} file will be read for initializations.  The following
@@ -760,23 +760,24 @@ level.  Vim interprets the items in this menu as follows:
 1)  If an "icon=" argument was specified, the file with this name is used.
     The file can either be specified with the full path or with the base name.
     In the last case it is searched for in the "bitmaps" directory in
-    'runtimepath', like in point 3.  Examples: >
+    'runtimepath', like in point 3.  Examples: >vim
 	:amenu icon=/usr/local/pixmaps/foo_icon.xpm ToolBar.Foo :echo "Foo"<CR>
 	:amenu icon=FooIcon ToolBar.Foo :echo "Foo"<CR>
 <   Note that in the first case the extension is included, while in the second
     case it is omitted.
     If the file cannot be opened the next points are tried.
     A space in the file name must be escaped with a backslash.
-    A menu priority must come _after_ the icon argument: >
+    A menu priority must come _after_ the icon argument: >vim
 	:amenu icon=foo 1.42 ToolBar.Foo :echo "42!"<CR>
 2)  An item called 'BuiltIn##', where ## is a number, is taken as number ## of
     the built-in bitmaps available in Vim.  Currently there are 31 numbered
-    from 0 to 30 which cover most common editing operations |builtin-tools|. >
+    from 0 to 30 which cover most common editing operations |builtin-tools|.
+    >vim
 	:amenu ToolBar.BuiltIn22 :call SearchNext("back")<CR>
 3)  An item with another name is first searched for in the directory
     "bitmaps" in 'runtimepath'.  If found, the bitmap file is used as the
     toolbar button image.  Note that the exact filename is OS-specific: For
-    example, under Win32 the command >
+    example, under Win32 the command >vim
 	:amenu ToolBar.Hello :echo "hello"<CR>
 <   would find the file 'hello.bmp'.  Under GTK+/X11 it is 'Hello.xpm'.  With
     GTK+ 2 the files 'Hello.png', 'Hello.xpm' and 'Hello.bmp' are checked for
@@ -789,7 +790,7 @@ level.  Vim interprets the items in this menu as follows:
     depending on your system.
 4)  If the bitmap is still not found, Vim checks for a match against its list
     of built-in names.  Each built-in button image has a name.
-    So the command >
+    So the command >vim
 	:amenu ToolBar.Open :e
 <   will show the built-in "open a file" button image if no open.bmp exists.
     All the built-in names can be seen used in menu.vim.
@@ -1214,7 +1215,7 @@ This section describes other features which are related to the GUI.
   are <Space>, <Tab>, <NL>, <CR>, <Esc>.
 
 - To check in a Vim script if the GUI is being used, you can use something
-  like this: >
+  like this: >vim
 
 	if has("gui_running")
 	   echo "yes, we have a GUI"
@@ -1223,7 +1224,7 @@ This section describes other features which are related to the GUI.
 	endif
 <							*setting-guifont*
 - When you use the same vimrc file on various systems, you can use something
-  like this to set options specifically for each type of GUI: >
+  like this to set options specifically for each type of GUI: >vim
 
 	if has("gui_running")
 	    if has("gui_gtk")

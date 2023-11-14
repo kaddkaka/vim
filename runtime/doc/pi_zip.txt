@@ -48,7 +48,7 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
    Different operating systems may use one or more shells to execute
    commands.  Zip will try to guess the correct quoting mechanism to
    allow spaces and whatnot in filenames; however, if it is incorrectly
-   guessing the quote to use for your setup, you may use >
+   guessing the quote to use for your setup, you may use >vim
 	g:zip_shq
 <  which by default is a single quote under Unix (') and a double quote
    under Windows (").  If you'd rather have no quotes, simply set
@@ -56,32 +56,32 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
 
 							*g:zip_unzipcmd*
    Use this option to specify the program which does the duty of "unzip".
-   It's used during browsing. By default: >
+   It's used during browsing. By default: >vim
 	let g:zip_unzipcmd= "unzip"
 <
 							*g:zip_zipcmd*
    Use this option to specify the program which does the duty of "zip".
    It's used during the writing (updating) of a file already in a zip
-   file; by default: >
+   file; by default: >vim
 	let g:zip_zipcmd= "zip"
 <
 							*g:zip_extractcmd*
    This option specifies the program (and any options needed) used to
-   extract a file from a zip archive.  By default, >
+   extract a file from a zip archive.  By default, >vim
 	let g:zip_extractcmd= g:zip_unzipcmd
 <
 							*g:zip_exec*
    For security reasons, one may prevent that Vim runs executables
    automatically when opening a buffer.  This option (default: "1")
    can be used to prevent executing the "unzip" command when set to
-   "0": >
+   "0": >vim
 	let g:zip_exec=0
 <
    PREVENTING LOADING~
 
    If for some reason you do not wish to use vim to examine zipped files,
    you may put the following two variables into your <.vimrc> to prevent
-   the zip plugin from loading: >
+   the zip plugin from loading: >vim
 
 	let g:loaded_zipPlugin= 1
 	let g:loaded_zip      = 1
@@ -92,7 +92,7 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
 
    Apparently there are a number of archivers which generate zip files that
    don't use the .zip extension (.jar, .xpi, etc).  To handle such files,
-   place a line in your <.vimrc> file: >
+   place a line in your <.vimrc> file: >vim
 
 	au BufReadCmd *.jar,*.xpi call zip#Browse(expand("<amatch>"))
 <
@@ -100,7 +100,7 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
    should be treated as zip files.
 
    Alternatively, one may change *g:zipPlugin_ext* in one's .vimrc.
-   Currently (11/30/15) it holds: >
+   Currently (11/30/15) it holds: >vim
 
 	let g:zipPlugin_ext= '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,
        \ *.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,

@@ -193,18 +193,18 @@ A. If you want to overrule all default file type checks.
 							*ftdetect*
    1. Create your user runtime directory.  You would normally use the first
       item of the 'runtimepath' option.  Then create the directory "ftdetect"
-      inside it.  Example for Unix: >
+      inside it.  Example for Unix: >vim
 	:!mkdir ~/.vim
 	:!mkdir ~/.vim/ftdetect
 <
    2. Create a file that contains an autocommand to detect the file type.
-      Example: >
+      Example: >vim
 	au BufRead,BufNewFile *.mine		set filetype=mine
 <     Note that there is no "augroup" command, this has already been done
       when sourcing your file.  You could also use the pattern "*" and then
       check the contents of the file to recognize it.
       Write this file as "mine.vim" in the "ftdetect" directory in your user
-      runtime directory.  For example, for Unix: >
+      runtime directory.  For example, for Unix: >vim
 	:w ~/.vim/ftdetect/mine.vim
 
 <  3. To use the new filetype detection you must restart Vim.
@@ -217,21 +217,22 @@ B. If you want to detect your file after the default file type checks.
 
    This works like A above, but instead of setting 'filetype' unconditionally
    use ":setfiletype".  This will only set 'filetype' if no file type was
-   detected yet.  Example: >
+   detected yet.  Example: >vim
 	au BufRead,BufNewFile *.txt		setfiletype text
 <
    You can also use the already detected file type in your command.  For
-   example, to use the file type "mypascal" when "pascal" has been detected: >
+   example, to use the file type "mypascal" when "pascal" has been detected:
+   >vim
 	au BufRead,BufNewFile *		if &ft == 'pascal' | set ft=mypascal
 								       | endif
 
 C. If your file type can be detected by the file name.
    1. Create your user runtime directory.  You would normally use the first
-      item of the 'runtimepath' option.  Example for Unix: >
+      item of the 'runtimepath' option.  Example for Unix: >vim
 	:!mkdir ~/.vim
 <
    2. Create a file that contains autocommands to detect the file type.
-      Example: >
+      Example: >vim
 	" my filetype file
 	if exists("did_load_filetypes")
 	  finish
@@ -241,7 +242,7 @@ C. If your file type can be detected by the file name.
 	  au! BufRead,BufNewFile *.xyz		setfiletype drawing
 	augroup END
 <     Write this file as "filetype.vim" in your user runtime directory.  For
-      example, for Unix: >
+      example, for Unix: >vim
 	:w ~/.vim/filetype.vim
 
 <  3. To use the new filetype detection you must restart Vim.
@@ -255,10 +256,10 @@ D. If your filetype can only be detected by inspecting the contents of the
    file.
 
    1. Create your user runtime directory.  You would normally use the first
-      item of the 'runtimepath' option.  Example for Unix: >
+      item of the 'runtimepath' option.  Example for Unix: >vim
 	:!mkdir ~/.vim
 <
-   2. Create a vim script file for doing this.  Example: >
+   2. Create a vim script file for doing this.  Example: >vim
 	if did_filetype()	" filetype already set..
 	  finish		" ..don't do these checks
 	endif
@@ -269,7 +270,7 @@ D. If your filetype can only be detected by inspecting the contents of the
 	endif
 <     See $VIMRUNTIME/scripts.vim for more examples.
       Write this file as "scripts.vim" in your user runtime directory.  For
-      example, for Unix: >
+      example, for Unix: >vim
 	:w ~/.vim/scripts.vim
 <
    3. The detection will work right away, no need to restart Vim.
@@ -368,12 +369,12 @@ will not be used for other files.
 Defining mappings for a filetype may get in the way of the mappings you
 define yourself.  There are a few ways to avoid this:
 1. Set the "maplocalleader" variable to the key sequence you want the mappings
-   to start with.  Example: >
+   to start with.  Example: >vim
 	:let maplocalleader = ","
 <  All mappings will then start with a comma instead of the default, which
    is a backslash.  Also see |<LocalLeader>|.
 
-2. Define your own mapping.  Example: >
+2. Define your own mapping.  Example: >vim
 	:map ,p <Plug>MailQuote
 <  You need to check the description of the plugin file below for the
    functionality it offers and the string to map to.
@@ -383,10 +384,10 @@ define yourself.  There are a few ways to avoid this:
 					*no_mail_maps* *g:no_mail_maps*
 3. Disable defining mappings for a specific filetype by setting a variable,
    which contains the name of the filetype.  For the "mail" filetype this
-   would be: >
+   would be: >vim
 	:let no_mail_maps = 1
 <					*no_plugin_maps* *g:no_plugin_maps*
-4. Disable defining mappings for all filetypes by setting a variable: >
+4. Disable defining mappings for all filetypes by setting a variable: >vim
 	:let no_plugin_maps = 1
 <
 
@@ -425,11 +426,11 @@ ways to change this:
 					*plugin_exec* *g:plugin_exec*
 Enable executing of external commands.  This was done historically for e.g.
 the perl filetype plugin (and a few others) to set the search path.
-Disabled by default for security reasons: >
+Disabled by default for security reasons: >vim
 	:let g:plugin_exec = 1
-It is also possible to enable this only for certain filetypes: >
+It is also possible to enable this only for certain filetypes: >vim
 	:let g:<filetype>_exec = 1
-So to enable this only for ruby, set the following variable: >
+So to enable this only for ruby, set the following variable: >vim
 	:let g:ruby_exec = 1
 
 If both, the global `plugin_exec` and the `<filetype>_exec` specific variable

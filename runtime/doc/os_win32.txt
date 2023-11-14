@@ -252,7 +252,7 @@ A. Basically what you need is to put a tee program that will copy its input
    Alternatively, try the more recent Cygnus version of the GNU tools at
    http://www.cygwin.com  Other Unix-style tools for Win32 are listed at
    http://directory.google.com/Top/Computers/Software/Operating_Systems/Unix/Win32/
-   When you do get a copy of tee, you'll need to add >
+   When you do get a copy of tee, you'll need to add >vim
 	:set shellpipe=\|\ tee
 <  to your _vimrc.
 
@@ -271,7 +271,7 @@ A. VisionFS can't handle certain dot (.) three letter extension file names.
    of Vim is to create a temporary file with a '~' character appended to the
    name.  When the file is written, it winds up being deleted.
 
-   Solution: Add this command to your _vimrc file: >
+   Solution: Add this command to your _vimrc file: >vim
 	:set backupext=.temporary
 
 Q. How do I change the blink rate of the cursor?
@@ -282,13 +282,13 @@ A. You can't!  This is a limitation of the NT console.  NT 5.0 is reported to
 Q. How can I asynchronously run an external command or program, or open a
    document or URL with its default program?
 A. When using :! to run an external command, you can run it with "start". For
-   example, to run notepad: >
+   example, to run notepad: >vim
 	:!start notepad
-<   To open "image.jpg" with the default image viewer: >
+<   To open "image.jpg" with the default image viewer: >vim
         :!start image.jpg
-<   To open the folder of the current file in Windows Explorer: >
+<   To open the folder of the current file in Windows Explorer: >vim
         :!start %:h
-<   To open the Vim home page with the default browser: >
+<   To open the Vim home page with the default browser: >vim
         :!start http://www.vim.org/
 <
    Using "start" stops Vim switching to another screen, opening a new console,
@@ -314,16 +314,16 @@ A. You have two possible solutions depending on what you want:
       input.  Otherwise it will get an EOF error because its input stream
       (stdin) would be redirected to \\.\NUL (stdout and stderr too).
 
-   Example for a console application, run Exuberant ctags: >
+   Example for a console application, run Exuberant ctags: >vim
         :!start /min ctags -R .
 <   When it has finished you should see file named "tags" in your current
    directory.  You should notice the window title blinking on your taskbar.
    This is more noticeable for commands that take longer.
-   Now delete the "tags" file and run this command: >
+   Now delete the "tags" file and run this command: >vim
         :!start /b ctags -R .
 <   You should have the same "tags" file, but this time there will be no
    blinking on the taskbar.
-   Example for a GUI application: >
+   Example for a GUI application: >vim
         :!start /min notepad
         :!start /b notepad
 <   The first command runs notepad minimized and the second one runs it

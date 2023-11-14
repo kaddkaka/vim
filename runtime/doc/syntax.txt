@@ -158,10 +158,10 @@ automatically with ":syntax enable", do this:
 	mkdir ~/.vim/syntax
 
 3. Write the Vim syntax file.  Or download one from the internet.  Then write
-   it in your syntax directory.  For example, for the "mine" syntax: >
+   it in your syntax directory.  For example, for the "mine" syntax: >vim
 	:w ~/.vim/syntax/mine.vim
 
-Now you can start using your syntax file manually: >
+Now you can start using your syntax file manually: >vim
 	:set syntax=mine
 You don't have to exit Vim to use this.
 
@@ -183,11 +183,11 @@ add a few items or change the highlighting, follow these steps:
 	mkdir ~/.vim/after/syntax
 
 3. Write a Vim script that contains the commands you want to use.  For
-   example, to change the colors for the C syntax: >
+   example, to change the colors for the C syntax: >vim
 	highlight cComment ctermfg=Green guifg=Green
 
 4. Write that file in the "after/syntax" directory.  Use the name of the
-   syntax, with ".vim" added.  For our C syntax: >
+   syntax, with ".vim" added.  For our C syntax: >vim
 	:w ~/.vim/after/syntax/c.vim
 
 That's it.  The next time you edit a C file the Comment color will be
@@ -3162,13 +3162,14 @@ symbolically linked to "bash" (Linux, Windows+cygwin) or "ksh" (Posix).
 One may specify a global default by instantiating one of the following
 variables in your <.vimrc>:
 
-   ksh: >
+   ksh: >vim
 	let g:is_kornshell = 1
-<   posix:  (using this is nearly the same as setting g:is_kornshell to 1) >
+<   posix:  (using this is nearly the same as setting g:is_kornshell to 1)
+>vim
 	let g:is_posix     = 1
-<   bash: >
+<   bash: >vim
 	let g:is_bash	   = 1
-<   sh: (default) Bourne shell >
+<   sh: (default) Bourne shell >vim
 	let g:is_sh	   = 1
 
 <   (dash users should use posix)
@@ -3179,12 +3180,12 @@ the Bourne shell syntax.  No need to quote RFCs or market penetration
 statistics in error reports, please -- just select the default version of the
 sh your system uses and install the associated "let..." in your <.vimrc>.
 
-The syntax/sh.vim file provides several levels of syntax-based folding: >
+The syntax/sh.vim file provides several levels of syntax-based folding: >vim
 
-	let g:sh_fold_enabled= 0     (default, no syntax folding)
-	let g:sh_fold_enabled= 1     (enable function folding)
-	let g:sh_fold_enabled= 2     (enable heredoc folding)
-	let g:sh_fold_enabled= 4     (enable if/do/for folding)
+	let g:sh_fold_enabled= 0     " (default, no syntax folding)
+	let g:sh_fold_enabled= 1     " (enable function folding)
+	let g:sh_fold_enabled= 2     " (enable heredoc folding)
+	let g:sh_fold_enabled= 4     " (enable if/do/for folding)
 >
 then various syntax items (ie. HereDocuments and function bodies) become
 syntax-foldable (see |:syn-fold|).  You also may add these together

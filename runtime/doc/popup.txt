@@ -883,7 +883,7 @@ Some hints:
 - The popup may be in the way of what the user is doing, making it close with
   a click, as in the example above, helps for that.
 - If the text property is removed the popup is closed.  Use something like
-  this: >
+  this: >vim
 	call prop_remove(#{type: 'popupMarker', id: propId})
 
 

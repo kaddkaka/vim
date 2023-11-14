@@ -1811,7 +1811,7 @@ There are three different types of searching:
    directory or in the directory of the current file (if the relative path
    starts with './' and 'd' is not included in 'cpoptions').
 
-   If Vim's current path is /u/user_x/work/release and you do >
+   If Vim's current path is /u/user_x/work/release and you do >vim
 	:set path=include;/u/user_x
 <  and then search for a file with |gf| the file is searched in: >
 	/u/user_x/work/release/include
@@ -1823,7 +1823,7 @@ There are three different types of searching:
    the non-existing directory if upwards searching is used.
 
 3) Combined up/downward search:
-   If Vim's current path is /u/user_x/work/release and you do >
+   If Vim's current path is /u/user_x/work/release and you do >vim
 	set path=**;/u/user_x
 <  and then search for a file with |gf| the file is searched in: >
 	/u/user_x/work/release/**
@@ -1835,7 +1835,7 @@ There are three different types of searching:
    '/u/user_x/work/release/**'.  So '/u/user_x/work/release/**' is searched
    three times and '/u/user_x/work/**' is searched twice.
 
-   In the above example you might want to set path to: >
+   In the above example you might want to set path to: >vim
 	:set path=**,/u/user_x/**
 <  This searches:
 	/u/user_x/work/release/** ~

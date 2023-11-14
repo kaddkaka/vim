@@ -3716,7 +3716,7 @@ first, and the result is thrown: >
 An exception might be thrown during evaluation of the argument of the ":throw"
 command.  Unless it is caught there, the expression evaluation is abandoned.
 The ":throw" command then does not throw a new exception.
-   Example: >
+   Example: >vim
 
 	:function! Foo(arg)
 	:  try
@@ -3741,7 +3741,7 @@ however displays "in Bar" and throws 4711.
 Any other command that takes an expression as argument might also be
 abandoned by an (uncaught) exception during the expression evaluation.  The
 exception is then propagated to the caller of the command.
-   Example: >
+   Example: >vim
 
 	:if Foo("arrgh")
 	:  echo "then"
@@ -3756,7 +3756,7 @@ Exceptions can be caught by a try conditional with one or more |:catch|
 commands, see |try-conditionals|.   The values to be caught by each ":catch"
 command can be specified as a pattern argument.  The subsequent catch clause
 gets executed when a matching exception is caught.
-   Example: >
+   Example: >vim
 
 	:function! Foo(value)
 	:  try
@@ -3794,7 +3794,7 @@ in the variable |v:exception|: >
 You may also be interested where an exception was thrown.  This is stored in
 |v:throwpoint|.  Note that "v:exception" and "v:throwpoint" are valid for the
 exception most recently caught as long it is not finished.
-   Example: >
+   Example: >vim
 
 	:function! Caught()
 	:  if v:exception != ""
@@ -3951,7 +3951,7 @@ that function or script part.
 							*break-finally*
 Cleanup code works also when the try block or a catch clause is left by
 a ":continue", ":break", ":return", or ":finish".
-   Example: >
+   Example: >vim
 
 	:let first = 1
 	:while 1
@@ -3973,7 +3973,7 @@ a ":continue", ":break", ":return", or ":finish".
 	:endwhile
 	:echo "end"
 
-This displays "first", "cleanup", "second", "cleanup", and "end". >
+This displays "first", "cleanup", "second", "cleanup", and "end". >vim
 
 	:function! Foo()
 	:  try
@@ -3996,7 +3996,7 @@ a finally clause is possible, but not recommended since it abandons the
 cleanup actions for the try conditional.  But, of course, interrupt and error
 exceptions might get raised from a finally clause.
    Example where an error in the finally clause stops an interrupt from
-working correctly: >
+working correctly: >vim
 
 	:try
 	:  try
@@ -4100,7 +4100,7 @@ cite the message text in a comment: >
 
 IGNORING ERRORS						*ignore-errors*
 
-You can ignore errors in a specific Vim command by catching them locally: >
+You can ignore errors in a specific Vim command by catching them locally: >vim
 
 	:try
 	:  write
@@ -4109,14 +4109,14 @@ You can ignore errors in a specific Vim command by catching them locally: >
 
 But you are strongly recommended NOT to use this simple form, since it could
 catch more than you want.  With the ":write" command, some autocommands could
-be executed and cause errors not related to writing, for instance: >
+be executed and cause errors not related to writing, for instance: >vim
 
 	:au BufWritePre * unlet novar
 
 There could even be such errors you are not responsible for as a script
 writer: a user of your script might have defined such autocommands.  You would
 then hide the error from the user.
-   It is much better to use >
+   It is much better to use >vim
 
 	:try
 	:  write
@@ -4138,7 +4138,7 @@ CATCHING INTERRUPTS					*catch-interrupt*
 When there are active try conditionals, an interrupt (CTRL-C) is converted to
 the exception "Vim:Interrupt".  You can catch it like every exception.  The
 script is not terminated, then.
-   Example: >
+   Example: >vim
 
 	:function! TASK1()
 	:  sleep 10
@@ -4179,7 +4179,7 @@ command on that line.  See |debug-scripts|.
 
 CATCHING ALL						*catch-all*
 
-The commands >
+The commands >vim
 
 	:catch /.*/
 	:catch //
@@ -4188,7 +4188,7 @@ The commands >
 catch everything, error exceptions, interrupt exceptions and exceptions
 explicitly thrown by the |:throw| command.  This is useful at the top level of
 a script in order to catch unexpected things.
-   Example: >
+   Example: >vim
 
 	:try
 	:
@@ -4210,7 +4210,7 @@ Note: Catching all might catch more things than you want.  Thus, you are
 strongly encouraged to catch only for problems that you can really handle by
 specifying a pattern argument to the ":catch".
    Example: Catching all could make it nearly impossible to interrupt a script
-by pressing CTRL-C: >
+by pressing CTRL-C: >vim
 
 	:while 1
 	:  try
@@ -4222,7 +4222,7 @@ by pressing CTRL-C: >
 
 EXCEPTIONS AND AUTOCOMMANDS				*except-autocmd*
 
-Exceptions may be used during execution of autocommands.  Example: >
+Exceptions may be used during execution of autocommands.  Example: >vim
 
 	:autocmd User x try
 	:autocmd User x   throw "Oops!"
@@ -4245,7 +4245,7 @@ For some commands, autocommands get executed before the main action of the
 command takes place.  If an exception is thrown and not caught in the sequence
 of autocommands, the sequence and the command that caused its execution are
 abandoned and the exception is propagated to the caller of the command.
-   Example: >
+   Example: >vim
 
 	:autocmd BufWritePre * throw "FAIL"
 	:autocmd BufWritePre * echo "Should not be displayed"
@@ -4268,7 +4268,7 @@ For some commands, autocommands get executed after the main action of the
 command has taken place.  If this main action fails and the command is inside
 an active try conditional, the autocommands are skipped and an error exception
 is thrown that can be caught by the caller of the command.
-   Example: >
+   Example: >vim
 
 	:autocmd BufWritePost * echo "File successfully written!"
 	:
@@ -4284,7 +4284,7 @@ This just displays: >
 
 If you really need to execute the autocommands even when the main action
 fails, trigger the event from the catch clause.
-   Example: >
+   Example: >vim
 
 	:autocmd BufWritePre  * set noreadonly
 	:autocmd BufWritePost * set readonly
@@ -4295,7 +4295,7 @@ fails, trigger the event from the catch clause.
 	:  doautocmd BufWritePost /i/m/p/o/s/s/i/b/l/e
 	:endtry
 <
-You can also use ":silent!": >
+You can also use ":silent!": >vim
 
 	:let x = "ok"
 	:let v:errmsg = ""
@@ -4394,7 +4394,7 @@ for an error when writing "myfile".
    With the appropriate patterns in the ":catch" command, you can catch for
 base classes or derived classes of your hierarchy.  Additional information in
 parentheses can be cut out from |v:exception| with the ":substitute" command.
-   Example: >
+   Example: >vim
 
 	:function! CheckRange(a, func)
 	:  if a:a < 0
@@ -4501,7 +4501,7 @@ scripts.
 Syntax errors in the exception handling commands are never caught by any of
 the ":catch" commands of the try conditional they belong to.  Its finally
 clauses, however, is executed.
-   Example: >
+   Example: >vim
 
 	:try
 	:  try
@@ -4529,7 +4529,7 @@ The original exception is discarded and an error exception is raised, instead.
 The ":try", ":catch", ":finally", and ":endtry" commands can be put on
 a single line, but then syntax errors may make it difficult to recognize the
 "catch" line, thus you better avoid this.
-   Example: >
+   Example: >vim
 	:try | unlet! foo # | catch | endtry
 raises an error exception for the trailing characters after the ":unlet!"
 argument, but does not see the ":catch" and ":endtry" commands, so that the
@@ -4539,7 +4539,7 @@ displayed.
 							*except-several-errors*
 When several errors appear in a single command, the first error message is
 usually the most specific one and therefore converted to the error exception.
-   Example: >
+   Example: >vim
 	echo novar
 causes >
 	E121: Undefined variable: novar
@@ -4549,7 +4549,7 @@ The value of the error exception inside try conditionals is: >
 <							*except-syntax-error*
 But when a syntax error is detected after a normal error in the same command,
 the syntax error is used for the exception being thrown.
-   Example: >
+   Example: >vim
 	unlet novar #
 causes >
 	E108: No such variable: "novar"

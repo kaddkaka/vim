@@ -103,7 +103,7 @@ Q: How can I set $PATH to something reasonable when I start Vim.app from the
    GUI or with open?
 A: The following trick works with most shells.  Put it in your vimrc file.
    This is included in the system vimrc file included with the binaries
-   distributed at macvim.org . >
+   distributed at macvim.org . >vim
 	let s:path = system("echo echo VIMPATH'${PATH}' | $SHELL -l")
 	let $PATH = matchstr(s:path, 'VIMPATH\zs.\{-}\ze\n')
 

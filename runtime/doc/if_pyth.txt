@@ -53,7 +53,7 @@ If [endmarker] is omitted from after the "<<", a dot '.' must be used after
 This form of the |:python| command is mainly useful for including python code
 in Vim scripts.
 
-Example: >
+Example: >vim
 	function! IcecreamInitialize()
 	python << EOF
 	class StrawberryIcecream:
@@ -61,8 +61,8 @@ Example: >
 			print 'EAT ME'
 	EOF
 	endfunction
-
-To see what version of Python you have: >
+<
+To see what version of Python you have: >vim
 	:python print(sys.version)
 
 There is no need to import sys, it's done by default.
@@ -642,7 +642,7 @@ vim.Dictionary object				*python-Dictionary*
                     `d=vim.bindeval('{}');d.update(arg)`. Without arguments
                     constructs empty dictionary.
 
-    Examples: >
+    Examples: >python
         d = vim.Dictionary(food="bar")		# Constructor
         d['a'] = 'b'				# Item assignment
         print d['a']				# getting item
@@ -670,7 +670,7 @@ vim.List object					*python-List*
                         `l=vim.List(iterable)` is the same as
                         `l=vim.bindeval('[]');l.extend(iterable)`. Without
                         arguments constructs empty list.
-    Examples: >
+    Examples: >python
         l = vim.List("abc")		# Constructor, result: ['a', 'b', 'c']
         l.extend(['abc', 'def'])	# .extend() method
         print l[1:]			# slicing
@@ -714,7 +714,7 @@ vim.Function object				*python-Function*
     whether it was given or not.  If `self` is given then it defaults to
     `False`.
 
-    Examples: >
+    Examples: >python
         f = vim.Function('tr')			# Constructor
         print f('abc', 'a', 'b')		# Calls tr('abc', 'a', 'b')
         vim.command('''
@@ -869,7 +869,7 @@ in your settings.  Please check the following items:
 5. Check the PYTHONPATH and PYTHONHOME environment variables.
 
 							*has-python*
-You can test what Python version is available with: >
+You can test what Python version is available with: >vim
 	if has('python')
 	  echo 'there is Python 2.x'
 	endif

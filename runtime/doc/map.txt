@@ -177,7 +177,7 @@ This unmap command does NOT work: >
 
 Because it tries to unmap "@@ ", including the white space before the command
 separator "|".  Other examples with trailing white space: >
-	unmap @@ 
+	unmap @@
 	unmap @@     # Vim9 script comment
 	unmap @@     " legacy script comment
 
@@ -615,7 +615,7 @@ There are three ways to map a special key:
    function key zero on some keyboards.  The <> form cannot be used when
    'cpoptions' includes the '<' flag.
 3. Use the termcap entry, with the form <t_xx>, where "xx" is the name of the
-   termcap entry.  Any string entry can be used.  For example: >
+   termcap entry.  Any string entry can be used.  For example: >vim
      :map <t_F3> G
 <  Maps function key 13 to "G".  This does not work if 'cpoptions' includes
    the '<' flag.
@@ -1592,10 +1592,10 @@ the argument.
 Note that arguments are used as text, not as expressions.  Specifically,
 "s:var" will use the script-local variable in the script where the command was
 defined, not where it is invoked!  Example:
-    script1.vim: >
+    script1.vim: >vim
 	:let s:error = "None"
 	:command -nargs=1 Error echoerr <args>
-<   script2.vim: >
+<   script2.vim: >vim
 	:source script1.vim
 	:let s:error = "Wrong!"
 	:Error s:error

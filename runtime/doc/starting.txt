@@ -1181,7 +1181,7 @@ will try to get the value for $VIM in this order:
    output of ":version").
 
 Once Vim has done this once, it will set the $VIM environment variable.  To
-change it later, use a ":let" command like this: >
+change it later, use a ":let" command like this: >vim
 	:let $VIM = "/home/paul/vim/"
 <
 								*$VIMRUNTIME*
